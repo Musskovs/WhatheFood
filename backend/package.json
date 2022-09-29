@@ -1,0 +1,21 @@
+{
+  "name": "node-api-mongo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon",
+    "dev:debug": "nodemon --inspect"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.13",
+    "mongoose-paginate": "^5.0.3",
+    "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
