@@ -1,6 +1,8 @@
 // Importar módulos necessários
 const mongoose = require("mongoose");
 
+const ingredientesSchema = new mongoose.Schema({ nome: String });
+
 const ReceitaSchema = new mongoose.Schema(
   {
     titulo: {
@@ -16,7 +18,7 @@ const ReceitaSchema = new mongoose.Schema(
         required: true,
     },
     ingredientes: {
-        type: [String],
+        type: [ingredientesSchema],
         required: true,
     },
     instrucoes: {

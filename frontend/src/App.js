@@ -9,10 +9,10 @@ function App() {
   return (
     <BrowserRouter>
       <nav className="App-BarraNav">
-        <NavLink to="/" exact={true} activeClassName="active--link" className="App-BarraNav-Link">
+        <NavLink to="/" exact={true} className="App-BarraNav-Link">
           Home
         </NavLink>
-        <NavLink to="/cadastro-receita" activeClassName="active--link" className="App-BarraNav-Link">
+        <NavLink to="/cadastro-receita" className="App-BarraNav-Link">
           Cadastro de Receitas
         </NavLink>
       </nav>

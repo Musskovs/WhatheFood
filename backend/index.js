@@ -16,9 +16,9 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 requireDir("./src/models");
 
-// Redireciona o caminho http://localhost:3000/api para o routes
+// Redireciona o caminho http://localhost:4000/api para o routes
 app.use("/api", require("./src/routes/routes"));
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("Server online!");
 });

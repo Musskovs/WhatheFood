@@ -12,7 +12,7 @@ const RecipeForm = () => {
           titulo: "",
           refeicao: "cafe",
           tipo: "rapida",
-          ingredientes: [""],
+          ingredientes: [{}],
           instrucoes: "",
         }}
         validate={(values) => {
@@ -37,10 +37,14 @@ const RecipeForm = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {
+            RecipesApi.post("receitas/inserir", values).catch(function (error) {
+              console.log(error);
+            });
             alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+            onSubmitProps.setSubmitting(false);
+            onSubmitProps.resetForm();
           }, 400);
         }}
       >
@@ -84,12 +88,12 @@ const RecipeForm = () => {
                       {values.ingredientes.map((ingrediente, index) => (
                         <Grid container direction="row" key={index}>
                           <Grid item xs={11}>
-                            <Field name={`ingredientes.${index}`} className="list-item"/>
+                            <Field name={ingrediente.name} className="list-item"/>
                           </Grid>
 
                           <Grid item xs={1}>
                             <button type="button" onClick={() => arrayHelpers.remove(index)} className="remove-button">
-                              -
+                              X
                             </button>
                           </Grid>
                         </Grid>
@@ -104,6 +108,7 @@ const RecipeForm = () => {
             </div>
 
             <div>
+              <label htmlFor="instrucoes" className="label-input">Instruções</label>
               <Field name="instrucoes" as="textarea" placeholder="Instruções" />
               <ErrorMessage name="instrucoes" component="div" className="error"/>
             </div>
