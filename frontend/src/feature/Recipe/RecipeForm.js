@@ -12,7 +12,7 @@ const RecipeForm = () => {
           titulo: "",
           refeicao: "cafe",
           tipo: "rapida",
-          ingredientes: [{}],
+          ingredientes: [{nome:''}],
           instrucoes: "",
         }}
         validate={(values) => {
@@ -88,7 +88,7 @@ const RecipeForm = () => {
                       {values.ingredientes.map((ingrediente, index) => (
                         <Grid container direction="row" key={index}>
                           <Grid item xs={11}>
-                            <Field name={ingrediente.name} className="list-item"/>
+                            <Field name={ingrediente.nome} className="list-item"/>
                           </Grid>
 
                           <Grid item xs={1}>

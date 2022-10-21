@@ -10,10 +10,16 @@ module.exports = {
       res.send(error)
     }
   },
+
   async store(req, res) {
-    const receita = await Receita.create(req.body);
-    return res.json(receita);
+    try {
+      const receita = await Receita.create(req.body);
+      return res.json(receita);
+    } catch (error){
+      res.send(error)
+    }
   },
+
   async getFirstIng(req, res){
     const firstIng = await Receita.aggregate(
       [
@@ -26,5 +32,6 @@ module.exports = {
       ]
     )
     res.json(firstIng)
-  }
+  },
+
 };
