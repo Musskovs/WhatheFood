@@ -1,0 +1,60 @@
+.app {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  position: absolute;
+  top: 1em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+}
+
+.question-section {
+  width: 100%;
+  position: relative;
+}
+
+.question-text {
+  margin-bottom: 5px;
+  font-size: xx-large;
+}
+
+.answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+button {
+  width: 60%;
+  margin: auto;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #252d4a;
+  border-radius: 15px;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  border: 5px solid #234668;
+  cursor: pointer;
+  margin-top: 5pt;
+}
+
+button:hover {
+  background-color: #555e7d;
+}
+
+button:focus {
+  outline: none;
+}
+
+button svg {
+  margin-right: 5px;
+}

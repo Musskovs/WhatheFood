@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
     <header>
       <div className="intro-logo jumbo-bg">
         <h1>Bem vindo ao WhatheFood!</h1>
-        <h3>Aqui ajudamos você à encontrar receitas que você quer e pode preparar!</h3>
+        <h2>Aqui ajudamos você à encontrar receitas que você quer e pode preparar!</h2>
         <div className="intro-button">
-          <a href="">Começar</a>
+          <Link to="perguntas" className='start-button'>Começar!</Link>
         </div>
       </div>
 
@@ -40,30 +41,26 @@ const Home = () => {
             font-size: 3.5em;
           }
         }
-        .intro-logo h3 {
-          font-size: 1rem;
+        .intro-logo h2 {
+          font-size: 1.5rem;
           font-weight: 300;
           color: var(--gray-color-1);
-          margin-bottom: 3em;
+          margin-bottom: 1em;
         }
 
-        .intro-logo img {
-          max-width: 95%;
-          height: auto;
-        }
         .intro-button {
-          margin-top: 2.3em;
+          margin-top: 1em;
           margin-bottom: 3em;
         }
-        .intro-button a {
+        .start-button {
           padding: 0.65em 2.6em;
           border-radius: 20px;
-          color: var(--brand-color);
+          color: white;
           border: 1.8px solid #1589FF;
           background: #151B54;
           transition: all 0.5s;
         }
-        .intro-button a:hover {
+        .start-button:hover {
           background-color: #0909FF;
           color: white;
         }

@@ -4,6 +4,7 @@ import './App.css';
 import RecipeForm from "./feature/Recipe/RecipeForm";
 import MainPage from "./feature/Main/MainPage";
 import PageNotFound from "./feature/NotFound/PageNotFound";
+import QuestionsPage from "./feature/Questions/QuestionsPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route index element={<MainPage />} />
         <Route path="cadastro-receita" element={<RecipeForm />} />
+        <Route path="perguntas" element={<QuestionsPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
