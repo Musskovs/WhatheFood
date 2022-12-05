@@ -12,7 +12,7 @@ const RecipeForm = () => {
           titulo: "",
           refeicao: "cafe",
           tipo: "rapida",
-          ingredientes: [''],
+          ingredientes: [{nome:''}],
           instrucoes: "",
         }}
         validate={(values) => {
@@ -88,7 +88,7 @@ const RecipeForm = () => {
                       {values.ingredientes.map((ingrediente, index) => (
                         <Grid container direction="row" key={index}>
                           <Grid item xs={11}>
-                            <Field name={`ingredientes.${index}`} className="list-item"/>
+                            <Field name={`ingredientes.${index}.nome`} value={ingrediente.nome} className="list-item"/>
                           </Grid>
 
                           <Grid item xs={1}>
@@ -99,7 +99,7 @@ const RecipeForm = () => {
                         </Grid>
                       ))}
                     <ErrorMessage name="ingredientes" component="div" className="error"/>
-                    <button type="button" onClick={() => arrayHelpers.push("")} className="add-button">
+                    <button type="button" onClick={() => arrayHelpers.push({nome: ''})} className="add-button">
                       Adicionar Ingrediente
                     </button>
                   </div>

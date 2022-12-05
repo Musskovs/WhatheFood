@@ -90,6 +90,7 @@ export default function QuestionsPage() {
 
 		setCurrentQuestion(nextQuestion);
 	};
+	
 	return (
 		<div className='app'>
 				<>
@@ -98,7 +99,9 @@ export default function QuestionsPage() {
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button key={answerOption.answerValue} onClick={() => handleAnswerOptionClick(answerOption.answerValue)}>{answerOption.answerText}</button>
+							<button key={answerOption.answerValue} onClick={() => handleAnswerOptionClick(answerOption.answerValue)}>
+								{answerOption.answerText}
+							</button>
 						))}
 					</div>
 				</>
