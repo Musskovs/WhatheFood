@@ -66,7 +66,7 @@ export default function PaginaPerguntas() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	async function handleAnswerOptionClick(answerValue) {
-    const questionLimit = 5;
+    const questionLimit = 4;
 		const nextQuestion = currentQuestion + 1;
 
 		console.log(`Questão atual: ${currentQuestion}`);
@@ -82,8 +82,6 @@ export default function PaginaPerguntas() {
       case currentQuestion === 1:
         nextReqValues.refeicao = refeicao;
         nextReqValues.tipo = answerValue;
-
-				console.log(`Valores requisição: ${JSON.stringify(nextReqValues)}`);
 
         await ApiReceitas.post('receitas/ing-1', nextReqValues).then(response => {
           setIngrediente(response.data);
@@ -135,7 +133,9 @@ export default function PaginaPerguntas() {
         });
 
 				console.log("CHEGUEI NA ULTIMA PARTE");
-				navigate("receitas/recomendacoes");
+				navigate("/receitas/recomendacoes");
+
+				break;
 
       default:
 				break;
@@ -146,18 +146,16 @@ export default function PaginaPerguntas() {
 	
 	return (
 		<div className='app'>
-				<>
-					<div className='question-section'>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-					</div>
-					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button key={answerOption.answerValue} onClick={() => handleAnswerOptionClick(answerOption.answerValue)}>
-								{answerOption.answerText}
-							</button>
-						))}
-					</div>
-				</>
+			<div className='question-section'>
+				<div className='question-text'>{questions[currentQuestion].questionText}</div>
+			</div>
+			<div className='answer-section'>
+				{questions[currentQuestion].answerOptions.map((answerOption) => (
+					<button key={answerOption.answerValue} onClick={() => handleAnswerOptionClick(answerOption.answerValue)}>
+						{answerOption.answerText}
+					</button>
+				))}
+				</div>
 		</div>
 	);
 }
