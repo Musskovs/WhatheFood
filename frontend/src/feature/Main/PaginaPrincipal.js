@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Home = () => {
+const PaginaPrincipal = () => {
   return (
     <header>
       <div className="intro-logo jumbo-bg">
@@ -69,4 +69,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default PaginaPrincipal

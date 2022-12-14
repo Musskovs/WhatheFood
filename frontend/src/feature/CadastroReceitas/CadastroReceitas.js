@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { Grid } from '@material-ui/core';
-import RecipesApi from "../../services/RecipesApi";
+import ApiReceitas from "../../services/ApiReceitas";
 
-const RecipeForm = () => {
+const CadastroReceitas = () => {
 
   return (
     <div>
@@ -39,7 +39,7 @@ const RecipeForm = () => {
         }}
         onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {
-            RecipesApi.post("receitas/inserir", values).catch(function (error) {
+            ApiReceitas.post("receitas/inserir", values).catch(function (error) {
               console.log(error);
             });
             alert(JSON.stringify(values, null, 2));
@@ -123,4 +123,4 @@ const RecipeForm = () => {
   );
 };
 
-export default RecipeForm;
+export default CadastroReceitas;

@@ -1,10 +1,11 @@
-
 import { Routes, Route, BrowserRouter, NavLink } from "react-router-dom";
-import './App.css';
-import RecipeForm from "./feature/Recipe/RecipeForm";
-import MainPage from "./feature/Main/MainPage";
-import PageNotFound from "./feature/NotFound/PageNotFound";
-import QuestionsPage from "./feature/Questions/QuestionsPage";
+import "./App.css";
+import CadastroReceitas from "./feature/CadastroReceitas/CadastroReceitas";
+import PaginaPrincipal from "./feature/Main/PaginaPrincipal";
+import PaginaNaoEncontrada from "./feature/NotFound/PaginaNaoEncontrada";
+import PaginaPerguntas from "./feature/Perguntas/PaginaPerguntas";
+import PaginaReceitasRecomendadas from "./feature/ReceitasRecomendadas/PaginaReceitasRecomendadas";
+import {RecipeContextProvider} from "./contexts/RecipeContext";
 
 function App() {
   return (
@@ -17,12 +18,15 @@ function App() {
           Cadastro de Receitas
         </NavLink>
       </nav>
-      <Routes>
-        <Route index element={<MainPage />} />
-        <Route path="cadastro-receita" element={<RecipeForm />} />
-        <Route path="perguntas" element={<QuestionsPage />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <RecipeContextProvider> 
+        <Routes>
+          <Route index element={<PaginaPrincipal />} />
+          <Route path="cadastro-receita" element={<CadastroReceitas />} />
+          <Route path="perguntas" element={<PaginaPerguntas />} />
+          <Route path="receitas/recomendacoes" element={<PaginaReceitasRecomendadas />}/>
+          <Route path="*" element={<PaginaNaoEncontrada />} />
+        </Routes>
+      </RecipeContextProvider>
     </BrowserRouter>
   );
 }
