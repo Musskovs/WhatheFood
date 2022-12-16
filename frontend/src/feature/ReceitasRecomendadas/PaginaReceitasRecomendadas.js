@@ -6,11 +6,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { CardActionArea } from "@material-ui/core";
 import "./PaginaReceitasRecomendadas.css";
+import { Link } from 'react-router-dom';
 
 export default function PaginaReceitasRecomendadas() {
   const { receitas } = useContext(RecipeContext);
-
-  console.log(receitas.map((x) => x.titulo));
+  
   return (
     <div className="recipePage">
       {receitas?.map((receita) => (
@@ -40,6 +40,9 @@ export default function PaginaReceitasRecomendadas() {
             </CardActionArea>
           </Card>
       ))}
+      
+      <Link to="/error" className="error-link">Não achou o que estava procurando?</Link>
+
     </div>
   );
 }

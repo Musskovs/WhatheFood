@@ -55,6 +55,13 @@ export default function PaginaPerguntas() {
 			],
     },
 		{
+      questionText: `Muito bem. Você tem ${ingrediente} para usar nessa receita?`,
+			answerOptions: [
+				{ answerText: 'Sim', answerValue: 'sim' },
+				{ answerText: 'Não', answerValue: 'não' },
+			],
+    },
+		{
       questionText: `Ok. Quase terminando. Tem ${ingrediente} sobrando?`,
 			answerOptions: [
 				{ answerText: 'Sim', answerValue: 'sim' },
@@ -66,13 +73,9 @@ export default function PaginaPerguntas() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	async function handleAnswerOptionClick(answerValue) {
-    const questionLimit = 4;
+    const questionLimit = 5;
 		const nextQuestion = currentQuestion + 1;
-
-		console.log(`Questão atual: ${currentQuestion}`);
-		console.log(`Valor atual: ${answerValue}`);
 		const nextReqValues = {refeicao:'', tipo:'', ingDisponiveis: [], ingNaoDisponiveis: []};
-		var resultStatus = 0;
 		var resultData;
 
     switch (true) {
@@ -86,10 +89,8 @@ export default function PaginaPerguntas() {
 
         await ApiReceitas.post('receitas/ing-1', nextReqValues).then(response => {
           setIngrediente(response.data);
-					console.log(`Valores resposta: ${JSON.stringify(response.data)}`);
 					resultData = response.data;
         }).catch(function (error) {
-          console.log(`Valores erro: ${error}`);
         });
 
 				if (resultData === ''){
@@ -108,17 +109,13 @@ export default function PaginaPerguntas() {
 				if (answerValue === 'sim'){
 					nextReqValues.ingDisponiveis.push(ingrediente);
 					setIngDisponiveis(prevArray => [...prevArray, ingrediente])
-					console.log(ingDisponiveis);
 				}else{
 					nextReqValues.ingNaoDisponiveis.push(ingrediente);
 					setIngNaoDisponiveis(prevArray => [...prevArray, ingrediente])
-					console.log("ING NOT DISPO",ingNaoDisponiveis);
 				}
 
         await ApiReceitas.post('receitas/next_ing', nextReqValues).then(response => {
           setIngrediente(response.data);
-					console.log(`Valores resposta: ${response.data}`);
-					resultStatus = response.status;
 					resultData = response.data;
         }).catch(function (error) {
           console.log(`Erro: ${error}`);
@@ -127,12 +124,9 @@ export default function PaginaPerguntas() {
 				if (resultData === ''){
 					navigate("/error");
 				}
-				console.log(`Status requisição: ${resultStatus}`);
-
 				break;
         
 			case currentQuestion > questionLimit:
-				console.log("FINAL")
 				nextReqValues.refeicao = refeicao;
         nextReqValues.tipo = tipo;
 				nextReqValues.ingDisponiveis = ingDisponiveis;
@@ -141,17 +135,14 @@ export default function PaginaPerguntas() {
 				if (answerValue === 'sim'){
 					nextReqValues.ingDisponiveis.push(ingrediente);
 					setIngDisponiveis(prevArray => [...prevArray, ingrediente])
-					console.log(ingDisponiveis);
 				}else{
 					nextReqValues.ingNaoDisponiveis.push(ingrediente);
 					setIngNaoDisponiveis(prevArray => [...prevArray, ingrediente])
-					console.log("ING NOT DISPO",ingNaoDisponiveis);
 				}
 
 				await ApiReceitas.post('receitas/receitas_recomendadas', nextReqValues).then(response => {
           setReceitas(response.data);
 					resultData = response.data;
-					console.log(response.data);
         }).catch(function (error) {
           console.log(error);
         });
@@ -165,7 +156,6 @@ export default function PaginaPerguntas() {
 				break;
 
       default:
-				console.log("DEFAULT")
 				break;
     }
 

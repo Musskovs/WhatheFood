@@ -42,7 +42,6 @@ const CadastroReceitas = () => {
             ApiReceitas.post("receitas/inserir", values).catch(function (error) {
               console.log(error);
             });
-            alert(JSON.stringify(values, null, 2));
             onSubmitProps.setSubmitting(false);
             onSubmitProps.resetForm();
           }, 400);

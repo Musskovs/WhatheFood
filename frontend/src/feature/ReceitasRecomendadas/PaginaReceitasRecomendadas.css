@@ -40,3 +40,23 @@
   color: rgb(185, 185, 185);
 }
 
+a.error-link:link {
+  color: lightgrey;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+a:visited {
+  color: lightskyblue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
