@@ -6,6 +6,7 @@ import PaginaNaoEncontrada from "./feature/NotFound/PaginaNaoEncontrada";
 import PaginaPerguntas from "./feature/Perguntas/PaginaPerguntas";
 import PaginaReceitasRecomendadas from "./feature/ReceitasRecomendadas/PaginaReceitasRecomendadas";
 import { RecipeContextProvider } from "./contexts/RecipeContext";
+import ErrorPage from "./feature/Error/ErrorPage";
 
 function App() {
   return (
@@ -24,10 +25,8 @@ function App() {
           <Route index element={<PaginaPrincipal />} />
           <Route path="cadastro-receita" element={<CadastroReceitas />} />
           <Route path="perguntas" element={<PaginaPerguntas />} />
-          <Route
-            path="receitas/recomendacoes"
-            element={<PaginaReceitasRecomendadas />}
-          />
+          <Route path="receitas/recomendacoes" element={<PaginaReceitasRecomendadas />}/>
+          <Route path="error" element={<ErrorPage />}/>
           <Route path="*" element={<PaginaNaoEncontrada />} />
         </Routes>
       </BrowserRouter>

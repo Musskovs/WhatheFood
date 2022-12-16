@@ -1,0 +1,18 @@
+.paginaErro {
+  display: flex;
+  margin: auto;
+  width: 75%;
+  flex-direction: column;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  padding: 2px 16px;
+  justify-content: center;
+  text-align: center;
+}
+
+.disclaimer {
+  margin: 40px;
+}
+
+.sugestions {
+  margin: 20px;
+}

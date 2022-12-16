@@ -73,6 +73,7 @@ export default function PaginaPerguntas() {
 		console.log(`Valor atual: ${answerValue}`);
 		const nextReqValues = {refeicao:'', tipo:'', ingDisponiveis: [], ingNaoDisponiveis: []};
 		var resultStatus = 0;
+		var resultData;
 
     switch (true) {
       case currentQuestion === 0:
@@ -85,10 +86,15 @@ export default function PaginaPerguntas() {
 
         await ApiReceitas.post('receitas/ing-1', nextReqValues).then(response => {
           setIngrediente(response.data);
-					console.log(`Valores resposta: ${JSON.stringify(response.data)}`)
+					console.log(`Valores resposta: ${JSON.stringify(response.data)}`);
+					resultData = response.data;
         }).catch(function (error) {
           console.log(`Valores erro: ${error}`);
         });
+
+				if (resultData === ''){
+					navigate("/error");
+				}
 
         setTipo(answerValue);
 				break;
@@ -113,10 +119,14 @@ export default function PaginaPerguntas() {
           setIngrediente(response.data);
 					console.log(`Valores resposta: ${response.data}`);
 					resultStatus = response.status;
+					resultData = response.data;
         }).catch(function (error) {
           console.log(`Erro: ${error}`);
         });
 
+				if (resultData === ''){
+					navigate("/error");
+				}
 				console.log(`Status requisição: ${resultStatus}`);
 
 				break;
@@ -140,12 +150,18 @@ export default function PaginaPerguntas() {
 
 				await ApiReceitas.post('receitas/receitas_recomendadas', nextReqValues).then(response => {
           setReceitas(response.data);
+					resultData = response.data;
 					console.log(response.data);
         }).catch(function (error) {
           console.log(error);
         });
 
-				navigate("/receitas/recomendacoes");
+				if (resultData.length>0){
+					navigate("/receitas/recomendacoes");
+				}else{
+					navigate("/error");
+				}
+
 				break;
 
       default:
