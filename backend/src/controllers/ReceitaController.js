@@ -53,7 +53,7 @@ module.exports = {
     while (i < ingList.length) {
       var isValid;
       for (let ingrediente of ingList[i].ingredientes) {
-        if (req.body.ingDisponiveis.includes(ingrediente.nome)) {
+        if (req.body.ingDisponiveis.includes(ingrediente.nome) || req.body.ingDisponiveis.length === 0) {
           isValid = true;
         }
 
